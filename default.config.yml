@@ -86,6 +86,48 @@ homebrew_cask_apps:
   # - zsa-wally
   - zoom
 
+# VS Code extensions
+vs_code_extensions:
+  - ms-azuretools.vscode-docker
+  - ms-python.vscode-pylance
+  - ms-python.python
+  - ms-vscode.cpptools
+  - ms-dotnettools.csharp
+  - ms-toolsai.jupyter
+  - ms-toolsai.jupyter-keymap
+  - ms-toolsai.jupyter-renderers
+  - msjsdiag.vscode-react-native
+  - visualstudioexptteam.vscodeintellicode
+  - vscjava.vscode-maven
+  - vscjava.vscode-java-dependency
+  - vscjava.vscode-java-debug
+  - vscjava.vscode-java-test
+  - redhat.java
+  - redhat.vscode-xml
+  - redhat.vscode-yaml
+  - platformio.platformio-ide
+  - golang.go
+  - graphql.vscode-graphql
+  - rust-lang.rust
+  - samuelcolvin.jinjahtml
+  - coenraads.bracket-pair-colorizer
+  - streetsidesoftware.code-spell-checker
+  - mikestead.dotenv
+  - dbaeumer.vscode-eslint
+  - esbenp.prettier-vscode
+  - exiasr.hadolint
+  - yzhang.markdown-all-in-one
+  - davidanson.vscode-markdownlint
+  - pkief.material-icon-theme
+  - teclado.vscode-nginx-format
+  - ahmadalli.vscode-nginx-conf
+  - sdras.night-owl
+  - christian-kohler.path-intellisense
+  - foxundermoon.shell-format
+  - timonwong.shellcheck
+  - jpoissonnier.vscode-styled-components
+  - eamodio.gitlens
+
 # App Store installs
 mas_email: ''
 mas_password: ''
