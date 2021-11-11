@@ -34,8 +34,11 @@
 - name: Fetch Oh My Zsh installer.
   get_url:
     url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: '{{ downloads }}'
+    dest: '{{ downloads }}/zsh-installer.sh'
     mode: 744
 
 - name: Install Oh My Zsh
-  command: '{{ downloads }}/install.sh' # noqa 301
+  command: zsh-install.sh
+  args:
+    chdir: '{{ downloads }}'
+  changed_when: false
