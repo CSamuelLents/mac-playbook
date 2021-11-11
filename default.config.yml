@@ -43,7 +43,7 @@ npm_packages: []
 pip_packages: []
 
 # Set to 'true' to configure VS Code.
-configure_vscode: false
+configure_vs_code: false
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
