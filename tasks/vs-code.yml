@@ -1,0 +1,13 @@
+---
+- name: Install VS Code Extensions.
+  shell: files/vscode/extensions.sh
+
+- name: Copy user settings.
+  copy:
+    src: files/vscode/settings.json
+    dest: ~/Library/Application Support/Code/User
+
+- name: Copy keybinding settings.
+  copy:
+    src: files/vscode/keybindings.json
+    dest: ~/Library/Application Support/Code/User

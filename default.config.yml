@@ -1,0 +1,49 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: false
+configure_terminal: false
+configure_osx: false
+
+configure_dock: false
+dockitems_remove: []
+dockitems_persist: []
+
+configure_sudoers: false
+sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
+dotfiles_repo: ''
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_files: []
+
+homebrew_installed_packages: []
+homebrew_taps: []
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps: []
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ''
+mas_password: ''
+
+osx_script: '~/.osx --no-restart'
+
+# Install packages from other package managers.
+composer_packages: []
+# Example:
+# - name: drush
+#   state: latest
+gem_packages: []
+npm_packages: []
+pip_packages: []
+
+# Set to 'true' to configure VS Code.
+configure_vscode: false
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
