@@ -3,6 +3,7 @@ extends: default
 
 rules:
   braces: disable
+  comments: disable
   line-length:
     max: 180
     level: warning

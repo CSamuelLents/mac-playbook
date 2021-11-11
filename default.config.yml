@@ -49,6 +49,7 @@ homebrew_installed_packages:
   - php
   - ssh-copy-id
   - readline
+  - rust
   - openssl
   - pv
   - vim
@@ -74,7 +75,6 @@ homebrew_cask_apps:
   - postman
   - qbittorrent
   - raspberry-pi-imager
-  - rust
   - sequel-ace
   - slack
   - steam
