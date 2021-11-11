@@ -8,6 +8,7 @@ homebrew_installed_packages:
   - cowsay
   - readline
   - pv
+  - vim
   - wget
   - wrk
 
