@@ -4,6 +4,32 @@
     path: ~/.vim
     state: directory
 
+- name: Clone NERDtree vim plugin.
+  git:
+    repo: https://github.com/preservim/nerdtree.git
+    dest: ~/.vim/pack/vendor/start/nerdtree
+    version: master
+    accept_hostkey: true
+  register: nerdtree_clone
+  become: false
+
+- name: Enable NERDtree helptags
+  command: vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
+  when: nerdtree_clone.changed
+
+- name: Clone Airline vim plugin.
+  git:
+    repo: https://github.com/vim-airline/vim-airline.git
+    dest: ~/.vim/pack/dist/start/vim-airline
+    version: master
+    accept_hostkey: true
+  register: airline_clone
+  become: false
+
+- name: Enable Airline helptags
+  command: vim -u NONE -c "helptags ~/.vim/pack/dist/start/vim-airline/doc" -c q
+  when: airline_clone.changed
+
 - name: Get current Terminal profile.
   command: defaults read com.apple.terminal 'Default Window Settings'
   register: terminal_theme
