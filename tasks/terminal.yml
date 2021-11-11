@@ -31,6 +31,11 @@
   changed_when: false
   when: "'Lents' not in terminal_theme.stdout"
 
+- name: Fetch Oh My Zsh installer.
+  get_url:
+    url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: '{{ downloads }}'
+    mode: 744
+
 - name: Install Oh My Zsh
-  shell: -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  when: true
+  command: '{{ downloads }}/install.sh' # noqa 301
