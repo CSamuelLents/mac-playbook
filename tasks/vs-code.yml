@@ -1,6 +1,7 @@
 ---
 - name: Install VS Code Extensions.
-  shell: files/vscode/extensions.sh
+  command: files/vscode/extensions.sh
+  when: true
 
 - name: Copy user settings.
   copy:
