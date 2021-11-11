@@ -1,49 +1,139 @@
 ---
+# Install scripts, required assets, etc.
 downloads: ~/.ansible-downloads/
 
+# Feature flags
+configure_vscode: false
 configure_dotfiles: false
 configure_terminal: false
 configure_osx: false
-
 configure_dock: false
-dockitems_remove: []
+configure_sudoers: false
+
+# Dock configuration
+dockitems_remove:
+  - Launchpad
+  - TV
+  - Podcasts
+  - 'App Store'
 dockitems_persist: []
 
-configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
+# Sudoers config
+sudoers_custom_config: |
+  # Allow users in admin group to use sudo with no password.
+  %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: ''
+# Environment configuration
+osx_script: '~/.osx --no-restart'
+dotfiles_repo: https://github.com/CSamuelLents/dotfiles.git
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
-dotfiles_files: []
+dotfiles_files:
+  - .zshrc
+  - .gitignore
+  - .osx
+  - .vimrc
 
-homebrew_installed_packages: []
-homebrew_taps: []
+# Homebrew package/cask installs
+homebrew_installed_packages:
+  - git
+  - go
+  - gpg
+  - iperf
+  - libevent
+  - sqlite
+  - mcrypt
+  - nmap
+  - node
+  - nvm
+  - php
+  - ssh-copy-id
+  - readline
+  - openssl
+  - pv
+  - vim
+  - wget
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
 homebrew_cask_appdir: /Applications
-homebrew_cask_apps: []
+homebrew_cask_apps:
+  - android-file-transfer
+  - anki
+  - homebrew/cask-versions/arduino-ide-beta
+  - brave-browser
+  - chromedriver
+  - docker
+  - figma
+  - firefox
+  - google-chrome
+  - handbrake
+  - mactex
+  - postman
+  - qbittorrent
+  - raspberry-pi-imager
+  - rust
+  - sequel-ace
+  - slack
+  - steam
+  - the-unarchiver
+  - vagrant
+  - visual-studio-code
+  - vlc
+  - wireshark
+  # - zsa-wally
+  - zoom
 
-# See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
+# App Store installs
 mas_email: ''
 mas_password: ''
+mas_upgrade_all_apps: false
 
-osx_script: '~/.osx --no-restart'
+mas_installed_apps:
+  - { id: 775737590, name: 'iA Writer' }
+  - { id: 926036361, name: 'LastPass Password Manager' }
+  - { id: 634148309, name: 'Logic Pro' }
+  - { id: 441258766, name: 'Magnet' }
+  - { id: 462058435, name: 'Microsoft Excel' }
+  - { id: 462062816, name: 'Microsoft PowerPoint' }
+  - { id: 1116599239, name: 'NordVPN IKE - Unlimited VPN' }
+  - { id: 425424353, name: 'The Unarchiver' }
+  - { id: 1278508951, name: 'Trello' }
+  - { id: 497799835, name: 'Xcode' }
 
-# Install packages from other package managers.
+mas_uninstalled_apps:
+  - { id: 408981434, name: 'iMovie' }
+  - { id: 409183694, name: 'Keynote' }
+  - { id: 409201541, name: 'Pages' }
+  - { id: 409203825, name: 'Numbers' }
+  - { id: 682658836, name: 'GarageBand' }
+
+# Global package installs
 composer_packages: []
-# Example:
-# - name: drush
-#   state: latest
-gem_packages: []
-npm_packages: []
-pip_packages: []
 
-# Set to 'true' to configure VS Code.
-configure_vs_code: false
+gem_packages:
+  - name: bundler
+    state: latest
 
-# Glob pattern to ansible task files to run after all other tasks are finished.
+npm_packages:
+  - name: yarn
+    state: latest
+
+pip_packages:
+  - name: pylint
+    state: latest
+    executable: pip3
+  - name: yamllint
+    state: latest
+    executable: pip3
+  - name: ansible
+    state: latest
+    executable: pip3
+  - name: ansible-lint
+    state: latest
+    executable: pip3
+
+# Run tasks after completion
 post_provision_tasks: []

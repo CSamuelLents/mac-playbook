@@ -1,7 +1,36 @@
----
-- name: Install VS Code Extensions.
-  command: files/vscode/extensions.sh
-  when: true
+# ---
+- name: assert supported build
+  assert:
+    that:
+      - "visual_studio_code_extensions_build in ('stable', 'insiders', 'oss')"
+
+- name: install extensions
+  become: yes
+  become_user: '{{ item.0.username }}'
+  visual_studio_code_extensions:
+    executable: code
+    name: '{{ item.1 }}'
+    state: present
+  with_subelements:
+    - '{{ users }}'
+    - visual_studio_code_extensions
+    - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1 }}'
+
+- name: uninstall extensions
+  become: yes
+  become_user: '{{ item.0.username }}'
+  visual_studio_code_extensions:
+    executable: code
+    name: '{{ item.1 }}'
+    state: absent
+  with_subelements:
+    - '{{ users }}'
+    - visual_studio_code_extensions_absent
+    - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1 }}'
 
 - name: Copy user settings.
   copy:

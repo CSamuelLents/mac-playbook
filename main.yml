@@ -29,6 +29,11 @@
       when: configure_dock
       tags: ['dock']
 
+    - role: gantsign.visual-studio-code-extensions
+      when: configure_vs_code
+      users:
+        - username: lents
+
   tasks:
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
