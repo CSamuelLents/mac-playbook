@@ -1,4 +1,4 @@
 ---
-- name: Set osx config.
-  command: '{{ osx_script }}'
+- name: Run .osx dotfiles.
+  command: /Users/lents/.osx
   changed_when: false

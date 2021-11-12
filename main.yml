@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become_user: lents
 
   vars_files:
     - default.config.yml
@@ -10,6 +11,11 @@
       with_fileglob:
         - '{{ playbook_dir }}/config.yml'
       tags: ['always']
+
+    - name: Ensure ansible downloads directory exists.
+      file:
+        path: '{{ downloads }}'
+        state: directory
 
   roles:
     - role: elliotweiser.osx-command-line-tools
@@ -38,15 +44,15 @@
       when: configure_terminal
       tags: ['terminal']
 
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
+    # - import_tasks: tasks/osx.yml
+    #   when: configure_osx
+    #   tags: ['osx']
 
     - import_tasks: tasks/global-packages.yml
       tags: ['global-packages']
 
     - import_tasks: tasks/vs-code.yml
-      when: configure_vs_code
+      when: configure_vscode
       tags: ['vs-code']
 
     - name: Run configured post-provision ansible task files.

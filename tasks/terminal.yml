@@ -43,12 +43,13 @@
   changed_when: false
   when: "'Lents' not in terminal_theme.stdout"
 
+# Needed to run: xattr -d com.apple.quarantine /tmp/JJG-Term.terminal
+# Terminal theme needs to be signed, apparently...
 - name: Ensure custom Terminal profile is added.
   command: open /tmp/Lents.terminal
   changed_when: false
   when: "'Lents' not in terminal_theme.stdout"
 
-# TODO: This doesn't work in Yosemite. Consider a different solution?
 - name: Ensure custom Terminal profile is set as default.
   command: '{{ item }}'
   with_items:
@@ -61,10 +62,8 @@
   get_url:
     url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     dest: '{{ downloads }}/zsh-installer.sh'
-    mode: 744
+    mode: u+x
 
-- name: Install Oh My Zsh
-  command: zsh-install.sh
-  args:
-    chdir: '{{ downloads }}'
-  changed_when: false
+# - name: Install Oh My Zsh
+#   command: '{{ downloads }}/zsh-installer.sh'
+#   changed_when: false

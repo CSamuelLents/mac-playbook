@@ -1,14 +1,19 @@
 ---
-- name: Install VS Code Extensions.
-  command: files/vscode/extensions.sh
-  when: true
+- name: Install extensions.
+  command: 'code --install-extension {{ item }}' # noqa 301
+  with_items: '{{ vs_code_extensions }}'
+
+- name: Uninstall extensions.
+  command: 'code --uninstall-extension {{ item }}' # noqa 301
+  with_items: '{{ vs_code_extensions_absent }}'
 
 - name: Copy user settings.
   copy:
     src: files/vscode/settings.json
-    dest: ~/Library/Application Support/Code/User
+    dest: ~/Library/Application Support/Code/User/settings.json
+
 
 - name: Copy keybinding settings.
   copy:
     src: files/vscode/keybindings.json
-    dest: ~/Library/Application Support/Code/User
+    dest: ~/Library/Application Support/Code/User/keybindings.json
