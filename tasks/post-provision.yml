@@ -1,0 +1,12 @@
+---
+- name: Check Homebrew OpenJDK symlink exists.
+  stat: path=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk
+  register: openjdk_sym
+
+- name: Create symlink for Homebrew OpenJDK.
+  become: true
+  file:
+    src: /opt/homebrew/opt/openjdk/libexec/openjdk.jdk
+    dest: /Library/Java/JavaVirtualMachines/openjdk.jdk
+    state: link
+  when: openjdk_sym.stat.islnk is not defined
