@@ -43,10 +43,10 @@
   changed_when: false
   when: "'Lents' not in terminal_theme.stdout"
 
-# Needed to run: xattr -d com.apple.quarantine /tmp/JJG-Term.terminal
+# Needed to run: xattr -d com.apple.quarantine /tmp/Lents.terminal
 # Terminal theme needs to be signed, apparently...
 - name: Ensure custom Terminal profile is added.
-  command: open /tmp/Lents.terminal
+  command: xattr -d com.apple.quarantine /tmp/Lents.terminal && open /tmp/Lents.terminal
   changed_when: false
   when: "'Lents' not in terminal_theme.stdout"
 

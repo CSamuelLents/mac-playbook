@@ -36,22 +36,29 @@ dotfiles_files:
 
 # Homebrew package/cask installs
 homebrew_installed_packages:
+  - gfortran
   - git
   - go
   - gpg
   - iperf
+  - ipython
+  - jq
   - libevent
-  - sqlite
   - mcrypt
   - nmap
   - node
   - nvm
+  - openblas
+  - openjdk
+  - openssl
   - php
-  - ssh-copy-id
+  - pv
   - readline
   - rust
-  - openssl
-  - pv
+  - shellcheck
+  - ssh-copy-id
+  - sqlite
+  # - truffle - doesn't support apple silicon yet
   - vim
   - wget
 
@@ -69,6 +76,7 @@ homebrew_cask_apps:
   - docker
   - figma
   - firefox
+  - ganache
   - google-chrome
   - handbrake
   - mactex
@@ -83,7 +91,6 @@ homebrew_cask_apps:
   - visual-studio-code
   - vlc
   - wireshark
-  # - zsa-wally
   - zoom
 
 # VS Code extensions
@@ -145,12 +152,12 @@ mas_installed_apps:
   - { id: 1278508951, name: 'Trello' }
   - { id: 497799835, name: 'Xcode' }
 
-mas_uninstalled_apps:
-  - { id: 408981434, name: 'iMovie' }
-  - { id: 409183694, name: 'Keynote' }
-  - { id: 409201541, name: 'Pages' }
-  - { id: 409203825, name: 'Numbers' }
-  - { id: 682658836, name: 'GarageBand' }
+# mas_uninstalled_apps:
+#   - { id: 408981434, name: 'iMovie' }
+#   - { id: 409183694, name: 'Keynote' }
+#   - { id: 409201541, name: 'Pages' }
+#   - { id: 409203825, name: 'Numbers' }
+#   - { id: 682658836, name: 'GarageBand' }
 
 # Global package installs
 composer_packages: []
@@ -174,6 +181,9 @@ pip_packages:
     state: latest
     executable: pip3
   - name: ansible-lint
+    state: latest
+    executable: pip3
+  - name: autopep8
     state: latest
     executable: pip3
 
