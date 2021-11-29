@@ -159,6 +159,14 @@ mas_installed_apps:
 #   - { id: 409203825, name: 'Numbers' }
 #   - { id: 682658836, name: 'GarageBand' }
 
+# AWS CLI config
+aws_cli_access_key_id: XXX
+aws_cli_secret_access_key: XXX
+aws_cli_region: us-east-2
+aws_cli_format: JSON
+aws_cli_profile: XXX
+aws_cli_system_user: XXX
+
 # Global package installs
 composer_packages: []
 
