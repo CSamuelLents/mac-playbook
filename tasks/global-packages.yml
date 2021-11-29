@@ -1,9 +1,32 @@
 ---
-- name: Install nvm.
+- name: Install NVM.
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Download the AWS CLI installer.
+  get_url: 
+    url: https://awscli.amazonaws.com/AWSCLIV2.pkg
+    dest: /tmp/AWSCLIV2.pkg
+    mode: '0774'
+  register: aws_cli_installer
+
+- name: Install AWS CLI.
+  become: true
+  command: installer -pkg /tmp/AWSCLIV2.pkg -target /
+  when: aws_cli_installer.changed
+
+- name: Configure AWS CLI.
+  shell: aws configure set {{ item.key }} {{ item.value }} --profile {{ aws_cli_profile }}
+  # no_log: true
+  with_dict:
+    aws_access_key_id: "{{ aws_cli_access_key_id }}"
+    aws_secret_access_key: "{{ aws_cli_secret_access_key }}"
+    region: "{{ aws_cli_region }}"
+    format: "{{ aws_cli_format }}"
+  become_user: "{{ aws_cli_system_user }}"
+  changed_when: false
 
 - name: Install global Composer packages.
   composer:
